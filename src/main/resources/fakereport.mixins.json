@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "gg.nodus.fakereport.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MixinAbuseReport"
+  ],
+  "client": [
+    "MixinClientPlayerEntity"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

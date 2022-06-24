@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "fakereport",
+  "version": "${version}",
+  "name": "Fakereport",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/fakereport/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "gg.nodus.fakereport.client.FakereportClient"
+    ],
+    "main": [
+      "gg.nodus.fakereport.Fakereport"
+    ]
+  },
+  "mixins": [
+    "fakereport.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.8",
+    "minecraft": "1.19.1-rc.1"
+  }
+}
