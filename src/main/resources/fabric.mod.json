@@ -6,7 +6,7 @@
   "description": "",
   "authors": [],
   "contact": {},
-  "license": "MIT",
+  "license": "WTFPL",
   "icon": "assets/gaslight/icon.png",
   "environment": "*",
   "entrypoints": {
