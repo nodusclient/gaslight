@@ -1,0 +1,22 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "gg.nodus.gaslight.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MixinClientInfo",
+    "MixinYggdrasilUserApiService"
+  ],
+  "client": [
+    "AccessorChatLogImplMixin",
+    "AccessorChatReportScreen",
+    "AccessorMixinChatSelectionScreen",
+    "MixinChatSelectionScreen",
+    "MixinMessageEntry",
+    "MixinMessagesListAdder",
+    "MixinSelectionListWidget"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
