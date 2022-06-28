@@ -1,8 +1,6 @@
 package gg.nodus.gaslight.mixin;
 
-import com.google.common.util.concurrent.Runnables;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.gui.screen.CreditsScreen;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.abusereport.ChatSelectionScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -34,9 +32,13 @@ import java.util.Optional;
 @Mixin(ChatSelectionScreen.class)
 public abstract class MixinChatSelectionScreen extends Screen {
 
-    @Shadow @Final private AbuseReporter reporter;
+    @Shadow
+    @Final
+    private AbuseReporter reporter;
 
-    @Shadow @Nullable private ChatSelectionScreen.SelectionListWidget selectionList;
+    @Shadow
+    @Nullable
+    private ChatSelectionScreen.SelectionListWidget selectionList;
     private TextFieldWidget newMessageField;
 
     protected MixinChatSelectionScreen(Text title) {
@@ -82,13 +84,13 @@ public abstract class MixinChatSelectionScreen extends Screen {
             }
         }));
         this.addDrawableChild(
-        new PressableTextWidget(2, this.height - 10, MinecraftClient.getInstance().textRenderer.getWidth("Gaslight - nodus.gg"), 10, Text.of("§aGaslight - nodus.gg"), (button) -> {
-            try {
-                Util.getOperatingSystem().open(new URI("https://nodus.gg"));
-            } catch (URISyntaxException e) {
-                throw new RuntimeException(e);
-            }
-        }, this.textRenderer));
+                new PressableTextWidget(2, this.height - 10, MinecraftClient.getInstance().textRenderer.getWidth("Gaslight - nodus.gg"), 10, Text.of("§aGaslight - nodus.gg"), (button) -> {
+                    try {
+                        Util.getOperatingSystem().open(new URI("https://nodus.gg"));
+                    } catch (URISyntaxException e) {
+                        throw new RuntimeException(e);
+                    }
+                }, this.textRenderer));
     }
 
     @Inject(method = "render", at = @At("TAIL"))

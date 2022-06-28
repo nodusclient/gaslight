@@ -10,7 +10,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(AbuseReportRequest.ClientInfo.class)
 public class MixinClientInfo {
 
-    @Shadow(remap = false) public String clientVersion;
+    @Shadow(remap = false)
+    public String clientVersion;
 
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init(String clientVersion, CallbackInfo ci) {

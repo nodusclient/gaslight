@@ -27,14 +27,13 @@ public abstract class MixinMessageEntry {
     @Shadow
     @Final
     private int index;
+    private int buttonHovered = -1;
 
     @Shadow
     public abstract boolean isSelected();
 
     @Shadow
     protected abstract boolean toggle();
-
-    private int buttonHovered = -1;
 
     @ModifyArg(method = "render", index = 5, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawableHelper;drawWithShadow(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/OrderedText;III)V"))
     public int redirect(int x) {

@@ -15,23 +15,29 @@ import java.util.List;
 @Mixin(EntryListWidget.class)
 public abstract class MixinSelectionListWidget<E extends EntryListWidget.Entry<E>> {
 
-    @Shadow protected int top;
+    @Shadow
+    protected int top;
 
-    @Shadow protected int headerHeight;
+    @Shadow
+    protected int headerHeight;
+    @Shadow
+    @Final
+    protected int itemHeight;
 
-    @Shadow public abstract double getScrollAmount();
+    @Shadow
+    public abstract double getScrollAmount();
 
-    @Shadow protected abstract int getEntryCount();
+    @Shadow
+    protected abstract int getEntryCount();
 
-    @Shadow public abstract List<E> children();
-
-    @Shadow @Final protected int itemHeight;
+    @Shadow
+    public abstract List<E> children();
 
     @SuppressWarnings("ConstantConditions")
     @Inject(method = "getEntryAtPosition", at = @At("HEAD"), cancellable = true)
     public void getEntryAtPosition(double x, double y, CallbackInfoReturnable<E> cir) {
         if (this.getClass() == (Class<?>) ChatSelectionScreen.SelectionListWidget.class) {
-            int m = MathHelper.floor(y - (double)this.top) - this.headerHeight + (int)this.getScrollAmount() - 4;
+            int m = MathHelper.floor(y - (double) this.top) - this.headerHeight + (int) this.getScrollAmount() - 4;
             int n = m / this.itemHeight;
             cir.setReturnValue(n >= 0 && m >= 0 && n < this.getEntryCount() ? this.children().get(n) : null);
         }

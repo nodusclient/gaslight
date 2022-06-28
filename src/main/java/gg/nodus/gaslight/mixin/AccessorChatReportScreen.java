@@ -13,11 +13,11 @@ public interface AccessorChatReportScreen {
     @Accessor("report")
     ChatAbuseReport getReport();
 
-    @Accessor("reporter")
-    AbuseReporter getAbuseReporter();
-
     @Accessor("report")
     void setReport(ChatAbuseReport report);
+
+    @Accessor("reporter")
+    AbuseReporter getAbuseReporter();
 
     @Invoker("onChange")
     void onChange();
