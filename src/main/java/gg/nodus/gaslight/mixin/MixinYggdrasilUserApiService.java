@@ -68,7 +68,7 @@ public class MixinYggdrasilUserApiService {
 
         request.report.evidence.messages = messages;
 
-        REMOVE_BEFORE_PUBLISHING(request, ci);
+        //REMOVE_BEFORE_PUBLISHING(request, ci);
     }
 
     private void REMOVE_BEFORE_PUBLISHING(AbuseReportRequest request, CallbackInfo ci) {
