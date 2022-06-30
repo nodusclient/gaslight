@@ -1,13 +1,14 @@
 package gg.nodus.gaslight.mixin;
 
+import net.minecraft.class_7595;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.abusereport.ChatSelectionScreen;
+import net.minecraft.client.gui.screen.report.ChatSelectionScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.PressableTextWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.client.network.abusereport.AbuseReporter;
-import net.minecraft.client.network.chat.ReceivedMessage;
+import net.minecraft.client.report.AbuseReportContext;
+import net.minecraft.client.report.ReceivedMessage;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.network.encryption.NetworkEncryptionUtils;
 import net.minecraft.network.message.ChatMessageSigner;
@@ -22,7 +23,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Instant;
@@ -34,7 +34,7 @@ public abstract class MixinChatSelectionScreen extends Screen {
 
     @Shadow
     @Final
-    private AbuseReporter reporter;
+    private AbuseReportContext reporter;
 
     @Shadow
     @Nullable
@@ -70,7 +70,8 @@ public abstract class MixinChatSelectionScreen extends Screen {
                                         new NetworkEncryptionUtils.SignatureData(signature.saltSignature().salt(), signature.saltSignature().signature())
                                 ),
                                 Optional.empty()
-                        )
+                        ),
+                        class_7595.SECURE
                 );
                 this.selectionList.addMessage(0, message);
                 this.reporter.chatLog().add(message);

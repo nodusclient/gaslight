@@ -1,8 +1,8 @@
 package gg.nodus.gaslight.mixin;
 
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.abusereport.ChatSelectionScreen;
-import net.minecraft.client.network.abusereport.AbuseReporter;
+import net.minecraft.client.gui.screen.report.ChatSelectionScreen;
+import net.minecraft.client.report.AbuseReportContext;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.gen.Invoker;
@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.gen.Invoker;
 public interface AccessorMixinChatSelectionScreen {
 
     @Accessor("reporter")
-    AbuseReporter getReporter();
+    AbuseReportContext getReporter();
 
     @Accessor("parent")
     Screen getParent();

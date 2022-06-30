@@ -1,6 +1,6 @@
 package gg.nodus.gaslight.mixin;
 
-import net.minecraft.client.gui.screen.abusereport.ChatSelectionScreen;
+import net.minecraft.client.gui.screen.report.ChatSelectionScreen;
 import net.minecraft.client.gui.widget.EntryListWidget;
 import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Final;
