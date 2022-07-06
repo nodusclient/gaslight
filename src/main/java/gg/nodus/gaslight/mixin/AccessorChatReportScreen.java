@@ -1,8 +1,8 @@
 package gg.nodus.gaslight.mixin;
 
-import net.minecraft.client.gui.screen.abusereport.ChatReportScreen;
-import net.minecraft.client.network.abusereport.ChatAbuseReport;
+import net.minecraft.client.gui.screen.report.ChatReportScreen;
 import net.minecraft.client.report.AbuseReportContext;
+import net.minecraft.client.report.ChatAbuseReport;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 import org.spongepowered.asm.mixin.gen.Invoker;

@@ -1,12 +1,12 @@
 package gg.nodus.gaslight.mixin;
 
-import net.minecraft.class_7595;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.report.ChatSelectionScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.PressableTextWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
+import net.minecraft.client.network.message.MessageTrustStatus;
 import net.minecraft.client.report.AbuseReportContext;
 import net.minecraft.client.report.ReceivedMessage;
 import net.minecraft.client.util.math.MatrixStack;
@@ -71,7 +71,7 @@ public abstract class MixinChatSelectionScreen extends Screen {
                                 ),
                                 Optional.empty()
                         ),
-                        class_7595.SECURE
+                        MessageTrustStatus.SECURE
                 );
                 this.selectionList.addMessage(0, message);
                 this.reporter.chatLog().add(message);

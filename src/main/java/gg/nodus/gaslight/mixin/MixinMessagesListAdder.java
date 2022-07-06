@@ -1,6 +1,6 @@
 package gg.nodus.gaslight.mixin;
 
-import net.minecraft.client.network.abusereport.MessagesListAdder;
+import net.minecraft.client.report.MessagesListAdder;
 import net.minecraft.client.report.ReceivedMessage;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
