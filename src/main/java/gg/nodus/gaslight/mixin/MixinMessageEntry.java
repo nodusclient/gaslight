@@ -4,11 +4,10 @@ import gg.nodus.gaslight.Gaslight;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.report.ChatSelectionScreen;
-import net.minecraft.client.report.ChatLogImpl;
-import net.minecraft.client.report.ReceivedMessage;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.sound.SoundEvents;
+import net.minecraft.text.StringVisitable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -25,10 +24,10 @@ public abstract class MixinMessageEntry {
     @Shadow
     private boolean fromReportedPlayer;
 
+    private int buttonHovered = -1;
     @Shadow
     @Final
-    private int index;
-    private int buttonHovered = -1;
+    private StringVisitable truncatedContent;
 
     @Shadow
     public abstract boolean isSelected();
@@ -38,7 +37,7 @@ public abstract class MixinMessageEntry {
 
     @ModifyArg(method = "render", index = 5, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawableHelper;drawWithShadow(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/OrderedText;III)V"))
     public int redirect(int x) {
-        if (Gaslight.removedIndexes.contains(index)) {
+        if (Gaslight.removedMessages.contains(this.truncatedContent.getString())) {
             return 0xFFFF0000;
         }
         if (fromReportedPlayer) {
@@ -50,68 +49,22 @@ public abstract class MixinMessageEntry {
     @Inject(method = "mouseClicked", at = @At("HEAD"), cancellable = true)
     public void mouseClicked(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> cir) {
         if (button == 0) {
-            switch (buttonHovered) {
-                case 0 -> {
-                    if (index == 0) {
-                        return;
-                    }
-                    MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-
-                    swapMessages(index, index - 1);
-                    refreshScreen();
-                    cir.setReturnValue(true);
+            if (buttonHovered == 2) {
+                if (!Gaslight.removedMessages.remove(this.truncatedContent.getString())) {
+                    System.out.println(this.truncatedContent.getString());
+                    Gaslight.removedMessages.add(this.truncatedContent.getString());
                 }
-                case 1 -> {
-                    var chatLog = (AccessorChatLogImplMixin) ((AccessorMixinChatSelectionScreen) MinecraftClient.getInstance().currentScreen).getReporter().chatLog();
-                    if (index == ((ChatLogImpl) chatLog).getMaxIndex()) {
-                        return;
-                    }
-                    MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-
-                    swapMessages(index, index + 1);
-                    refreshScreen();
-                    cir.setReturnValue(true);
+                if (this.isSelected()) {
+                    this.toggle();
                 }
-                case 2 -> {
-                    if (!Gaslight.removedIndexes.remove(index)) {
-                        Gaslight.removedIndexes.add(index);
-                    }
-                    if (this.isSelected()) {
-                        this.toggle();
-                    }
-                    MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+                MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
+                cir.setReturnValue(true);
+            } else {
+                if (Gaslight.removedMessages.contains(this.truncatedContent.getString())) {
                     cir.setReturnValue(true);
-                }
-                default -> {
-                    if (Gaslight.removedIndexes.contains(index)) {
-                        cir.setReturnValue(true);
-                    }
                 }
             }
         }
-    }
-
-    private void swapMessages(int index, int index2) {
-        var chatLog = (AccessorChatLogImplMixin) ((AccessorMixinChatSelectionScreen) MinecraftClient.getInstance().currentScreen).getReporter().chatLog();
-        var message = chatLog.getMessages()[index];
-        chatLog.getMessages()[index] = chatLog.getMessages()[index2];
-        chatLog.getMessages()[index2] = message;
-
-        if (Gaslight.removedIndexes.contains(index) && !Gaslight.removedIndexes.contains(index2)) {
-            Gaslight.removedIndexes.remove(index);
-            Gaslight.removedIndexes.add(index2);
-        } else if (Gaslight.removedIndexes.contains(index2)) {
-            Gaslight.removedIndexes.remove(index2);
-            Gaslight.removedIndexes.add(index);
-        }
-    }
-
-    private void refreshScreen() {
-        var parent = ((AccessorChatReportScreen) ((AccessorMixinChatSelectionScreen) MinecraftClient.getInstance().currentScreen).getParent());
-        MinecraftClient.getInstance().setScreen(new ChatSelectionScreen((Screen) parent, parent.getAbuseReporter(), parent.getReport(), (report) -> {
-            parent.setReport(report);
-            parent.onChange();
-        }));
     }
 
     @Inject(method = "render", at = @At("TAIL"))
@@ -120,21 +73,10 @@ public abstract class MixinMessageEntry {
             return;
         }
 
-        boolean canReorder = ((AccessorMixinChatSelectionScreen) MinecraftClient.getInstance().currentScreen).getReporter().chatLog().get(this.index).isSentFrom(MinecraftClient.getInstance().player.getUuid());
-        int moveUpX = x + entryWidth;
-        drawButton(matrices, moveUpX, y, entryHeight, "↑", canReorder);
-
-        int moveDownX = x + entryWidth + entryHeight + 3;
-        drawButton(matrices, moveDownX, y, entryHeight, "↓", canReorder);
-
-        int deleteX = x + entryWidth + entryHeight * 2 + 6;
+        int deleteX = x + entryWidth + 2;
         drawButton(matrices, deleteX, y, entryHeight, "X", true);
 
-        if (isMouseOver(moveUpX, y, entryHeight, mouseX, mouseY) && canReorder) {
-            buttonHovered = 0;
-        } else if (isMouseOver(moveDownX, y, entryHeight, mouseX, mouseY) && canReorder) {
-            buttonHovered = 1;
-        } else if (isMouseOver(deleteX, y, entryHeight, mouseX, mouseY)) {
+        if (isMouseOver(deleteX, y, entryHeight, mouseX, mouseY)) {
             buttonHovered = 2;
         } else {
             buttonHovered = -1;

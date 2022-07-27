@@ -41,7 +41,6 @@ public abstract class MixinSelectionListWidget<E extends EntryListWidget.Entry<E
             int n = m / this.itemHeight;
             cir.setReturnValue(n >= 0 && m >= 0 && n < this.getEntryCount() ? this.children().get(n) : null);
         }
-
     }
 
 }
