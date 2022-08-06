@@ -8,6 +8,8 @@
     "MixinYggdrasilUserApiService"
   ],
   "client": [
+    "AccessorChatLogImpl",
+    "MixinChatAbuseReport",
     "MixinChatSelectionScreen",
     "MixinMessageEntry",
     "MixinMessagesListAdder",

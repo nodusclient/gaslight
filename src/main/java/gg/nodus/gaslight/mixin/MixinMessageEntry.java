@@ -25,9 +25,6 @@ public abstract class MixinMessageEntry {
     private boolean fromReportedPlayer;
 
     private int buttonHovered = -1;
-    @Shadow
-    @Final
-    private StringVisitable truncatedContent;
 
     @Shadow
     public abstract boolean isSelected();
@@ -35,9 +32,11 @@ public abstract class MixinMessageEntry {
     @Shadow
     protected abstract boolean toggle();
 
+    @Shadow @Final private int index;
+
     @ModifyArg(method = "render", index = 5, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawableHelper;drawWithShadow(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/OrderedText;III)V"))
     public int redirect(int x) {
-        if (Gaslight.removedMessages.contains(this.truncatedContent.getString())) {
+        if (Gaslight.removedMessageIndexes.contains(this.index)) {
             return 0xFFFF0000;
         }
         if (fromReportedPlayer) {
@@ -50,9 +49,8 @@ public abstract class MixinMessageEntry {
     public void mouseClicked(double mouseX, double mouseY, int button, CallbackInfoReturnable<Boolean> cir) {
         if (button == 0) {
             if (buttonHovered == 2) {
-                if (!Gaslight.removedMessages.remove(this.truncatedContent.getString())) {
-                    System.out.println(this.truncatedContent.getString());
-                    Gaslight.removedMessages.add(this.truncatedContent.getString());
+                if (!Gaslight.removedMessageIndexes.remove(this.index)) {
+                    Gaslight.removedMessageIndexes.add(this.index);
                 }
                 if (this.isSelected()) {
                     this.toggle();
@@ -60,7 +58,7 @@ public abstract class MixinMessageEntry {
                 MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
                 cir.setReturnValue(true);
             } else {
-                if (Gaslight.removedMessages.contains(this.truncatedContent.getString())) {
+                if (Gaslight.removedMessageIndexes.contains(this.index)) {
                     cir.setReturnValue(true);
                 }
             }
