@@ -1,5 +1,6 @@
 package gg.nodus.gaslight.mixin;
 
+import com.mojang.authlib.minecraft.client.ObjectMapper;
 import com.mojang.authlib.yggdrasil.YggdrasilUserApiService;
 import com.mojang.authlib.yggdrasil.request.AbuseReportRequest;
 import org.spongepowered.asm.mixin.Mixin;

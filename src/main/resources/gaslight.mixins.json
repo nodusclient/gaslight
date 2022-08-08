@@ -5,6 +5,8 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "MixinClientInfo",
+    "MixinCommandManager",
+    "MixinServerPlayNetworkHandler",
     "MixinYggdrasilUserApiService"
   ],
   "client": [

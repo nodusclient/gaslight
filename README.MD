@@ -1,5 +1,15 @@
 # Gaslight
 
+## Server-side Gaslight
+If you install Gaslight on a server, there are new ways to manipulate context. The attack in the video shows a server that appears to be disabling chat reports via system messages, however clients will still sign chat messages. By sending a message, then immediately sending the delete chat message packet, you can have a client acknowledge a chat message that the user never saw, and because the server is using system messages, the user cannot tell when messages are forged. This leads to a much simpler chat log than client side Gaslight, simply "are you breaking mojang's tos?" "of course!".
+
+These attacks can still be done on a server that isn't pretending to use system messages, you only lose the ability to send messages completely detached from the chain.
+
+There are three commands added by Gaslight:
+ - sendsystem - sends a chat message as a system message without signing it
+ - sendhidden - sends a signed chat message to a specified user, and immediately removes it from the clients screen, however the message is still in last seen
+ - sendnormal - sends a direct message that looks like a public chat message
+
 ## Detectability Challenge
 Mojang recently [tweeted](https://twitter.com/Minecraft/status/1553077938639085568) implying that Gaslight is detectable, while it is (currently) detectable in some cases, it is not detectable in all cases, and if you know what you are doing, generating indistinguishable reports is more than doable. We have included 3 example reports, containing all data sent to Mojang (although we redacted the server ip), at least one of them is legitimate, and at least one is produced via Gaslight. Which example is legitimate, which is from Gaslight? We will attach any correct cryptographic proof to the top of this readme, and probably look like idiots.
 
