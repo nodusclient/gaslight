@@ -1,5 +1,15 @@
 # Gaslight
 
+## 1.19.3
+
+[https://youtu.be/H7R7sW4Ne1g](https://youtu.be/H7R7sW4Ne1g)
+
+1.19.3 rewrote chat again, this time the security of the system hinges almost entirely on last seen. Previously, context gathering was done by walking the merkle tree formed by the last seens, this allowed adding messages because it would if alice saw a message from bob, and bob has seen a private message from himself to charlie, it would imply that alice has seen that private message. As of 1.19.3, last seen is a list of 20 signatures, which is the only source for context, this means you can't add messages by implying they've been seen. The new system has a similar flaw to the last attempt in that messages can be removed as long as theres no messages from you that acknowledge them, and from the point of view of a silent reporter, this means every message can be deleted (although it might look weird if 20 people have seen a message you haven't).
+
+Updated detectability challenge hash: `4539885ff33448ae8cb414a4518778e2f1bd69a1bcf2e9656906aef3227ca8411f2c3caf5841687d3e95fe086a7827ed882335b9d58337ed0942024fa160e52e`
+
+## 1.19.2
+
 ## Server-side Gaslight
 If you install Gaslight on a server, there are new ways to manipulate context. The attack in the video shows a server that appears to be disabling chat reports via system messages, however clients will still sign chat messages. By sending a message, then immediately sending the delete chat message packet, you can have a client acknowledge a chat message that the user never saw, and because the server is using system messages, the user cannot tell when messages are forged. This leads to a much simpler chat log than client side Gaslight, simply "are you breaking mojang's tos?" "of course!".
 

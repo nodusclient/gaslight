@@ -5,16 +5,14 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "MixinClientInfo",
-    "MixinCommandManager",
-    "MixinServerPlayNetworkHandler",
     "MixinYggdrasilUserApiService"
   ],
   "client": [
+    "AccessorAbuseReportContext",
     "AccessorChatLogImpl",
     "MixinChatAbuseReport",
     "MixinChatSelectionScreen",
     "MixinMessageEntry",
-    "MixinMessagesListAdder",
     "MixinSelectionListWidget"
   ],
   "injectors": {

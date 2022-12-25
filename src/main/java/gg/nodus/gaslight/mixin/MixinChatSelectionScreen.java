@@ -17,12 +17,12 @@ import java.net.URISyntaxException;
 @Mixin(ChatSelectionScreen.class)
 public abstract class MixinChatSelectionScreen extends Screen {
 
-    protected MixinChatSelectionScreen(Text title) {
+    protected MixinChatSelectionScreen(final Text title) {
         super(title);
     }
 
     @Inject(method = "init", at = @At("HEAD"))
-    public void init(CallbackInfo ci) {
+    public void init(final CallbackInfo ci) {
         this.addDrawableChild(
                 new PressableTextWidget(2, this.height - 10, MinecraftClient.getInstance().textRenderer.getWidth("Gaslight - nodus.gg"), 10, Text.of("§aGaslight - nodus.gg"), (button) -> {
                     try {

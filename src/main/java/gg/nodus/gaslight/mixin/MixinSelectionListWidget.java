@@ -35,10 +35,10 @@ public abstract class MixinSelectionListWidget<E extends EntryListWidget.Entry<E
 
     @SuppressWarnings("ConstantConditions")
     @Inject(method = "getEntryAtPosition", at = @At("HEAD"), cancellable = true)
-    public void getEntryAtPosition(double x, double y, CallbackInfoReturnable<E> cir) {
+    public void getEntryAtPosition(final double x, final double y, final CallbackInfoReturnable<E> cir) {
         if (this.getClass() == (Class<?>) ChatSelectionScreen.SelectionListWidget.class) {
-            int m = MathHelper.floor(y - (double) this.top) - this.headerHeight + (int) this.getScrollAmount() - 4;
-            int n = m / this.itemHeight;
+            final int m = MathHelper.floor(y - (double) this.top) - this.headerHeight + (int) this.getScrollAmount() - 4;
+            final int n = m / this.itemHeight;
             cir.setReturnValue(n >= 0 && m >= 0 && n < this.getEntryCount() ? this.children().get(n) : null);
         }
     }

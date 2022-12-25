@@ -1,86 +1,47 @@
 {
-  "id": "d9bd6f2df0f541b588b6a59220c9a916",
+  "version": 1,
+  "id": "1b4c3617e4ea4c779982dde75980ad7d",
   "report": {
-    "opinionComments": "example 2",
+    "opinionComments": "",
     "reason": "HATE_SPEECH",
     "evidence": {
       "messages": [
         {
-          "header": {
-            "signatureOfPreviousHeader": "UnLMgjef4aMnExnZo/JzbUXeDthZIFNfjZJw3mXmSc3htmnysDFY9qBFpOaq7s7kepbneZnXLhQtC843zySTyb4a7DDzoPs5m6Ku8G9EM/KUe1SnKNPPWaG+SxpcptmGAndP6m6rs5e0y2yzfe8FGjNRPoyiySbPKQQ9mwtGPznaPfb6CLWArDlvMC7Fo63B4SBpakaoAGA7+LmvUHPcm6/BNHd4fptDhCQr57IOOMlSdv96QZcxHu24ZioAosOQMBHmQaxCGb5euGkQj+AjkG8K/oLqpFTgCAKmQy8UQZN2URYk0dQLqalt6Dh5x/xPyRmmBVzde65kg6d1rajmmA\u003d\u003d",
-            "profileId": "827976805db542929dac840d65a847c0",
-            "hashOfBody": "+1lJFLt4Ud4oehA9/4/OoZGa8/Rv4vbw7J7MEseCP74\u003d",
-            "signature": "Y9FA2ZgVCwAcFI2tvwk06moPMSNTb8LcmaJQMt7qZwDby7SfSRMvmla+NcYnXSHJwKhVXLZ5KpAZpEMz3gZqsrFbUdcrdi10eBsGOPvd8a0p1s1KtmiFRu5utmQMXZCl+arIHEIYCRZcuTSeyTJuY5lH46M68cbKh/BANO/OwlOj7uDD2LghSSE0aTaVv1CmPm9yzA+kVACxPRgbLdfC+Q6lqxaI00TfhPL4BsJNvRtzA8/7gOL4H7jbIpW8Hfphc3bk83qQ7hyTdTfOwyC9qlpOWut5RrIBmY7X0MJP20XedCys5VEw+D8tb4Z3BoMsKuR8xz/dVKPLOPPOi4U1Nw\u003d\u003d"
-          },
-          "body": {
-            "timestamp": "2022-08-06T01:47:43.375Z",
-            "salt": -2972468198418806601,
-            "lastSeenSignatures": [
-              {
-                "profileId": "827976805db542929dac840d65a847c0",
-                "lastSignature": "UnLMgjef4aMnExnZo/JzbUXeDthZIFNfjZJw3mXmSc3htmnysDFY9qBFpOaq7s7kepbneZnXLhQtC843zySTyb4a7DDzoPs5m6Ku8G9EM/KUe1SnKNPPWaG+SxpcptmGAndP6m6rs5e0y2yzfe8FGjNRPoyiySbPKQQ9mwtGPznaPfb6CLWArDlvMC7Fo63B4SBpakaoAGA7+LmvUHPcm6/BNHd4fptDhCQr57IOOMlSdv96QZcxHu24ZioAosOQMBHmQaxCGb5euGkQj+AjkG8K/oLqpFTgCAKmQy8UQZN2URYk0dQLqalt6Dh5x/xPyRmmBVzde65kg6d1rajmmA\u003d\u003d"
-              }
-            ],
-            "message": {
-              "plain": "are you breaking tos"
-            }
-          },
+          "index": 0,
+          "profileId": "366636fd3b0b47748b1ef704181120ed",
+          "sessionId": "184052a39e6d4bd6a82bac5ded3d246e",
+          "timestamp": "2022-12-25T00:23:39.466Z",
+          "salt": 5361806358190463402,
+          "lastSeen": [],
+          "message": "test",
+          "signature": "dMub12o6YQmJnAOHRfE8wbfyTggKzd0MuQ9Cw1kze1M6kxifQSzBiwwrHtRjxm9vcB+X/nwKtk8LBbXzI09PA65UEVslcqMp85z7DSIbVY3FnhkfJ95MzbvZI53UFPHxNy0pGxh9p9C2PtMb0kqzKUyaCz8hukNjzwLpQCa7kj/RVHRax1eNbboYLVjTSr8VrxjTWc82BJdI/bmLv4nLmCgvYYGb9KD1msqoUSdP1DfVA6PaH/yRTGEE5P82LGg7Hg74J6nf+0TARtLkr6lOZ3/LXI52McIL/QITcvqBeMgiMHBKNevCzrE7HeXIQuOAgERF/dJHQZ6r13S5cpZVFA\u003d\u003d",
           "messageReported": false
         },
         {
-          "header": {
-            "signatureOfPreviousHeader": "Y9FA2ZgVCwAcFI2tvwk06moPMSNTb8LcmaJQMt7qZwDby7SfSRMvmla+NcYnXSHJwKhVXLZ5KpAZpEMz3gZqsrFbUdcrdi10eBsGOPvd8a0p1s1KtmiFRu5utmQMXZCl+arIHEIYCRZcuTSeyTJuY5lH46M68cbKh/BANO/OwlOj7uDD2LghSSE0aTaVv1CmPm9yzA+kVACxPRgbLdfC+Q6lqxaI00TfhPL4BsJNvRtzA8/7gOL4H7jbIpW8Hfphc3bk83qQ7hyTdTfOwyC9qlpOWut5RrIBmY7X0MJP20XedCys5VEw+D8tb4Z3BoMsKuR8xz/dVKPLOPPOi4U1Nw\u003d\u003d",
-            "profileId": "827976805db542929dac840d65a847c0",
-            "hashOfBody": "ufbGZw6DpFyMJKYxShidvUej5WLf1s6gLz2ZVgJsWdI\u003d",
-            "signature": "DwRX76JIZLVhNnT5D8JVf/ZzjWmpWuu603NithkkU3dty7hc1Vft61QJq9VY43BCcQfnSUksI/bZutapX9+dqsPDsy8M/v0WRt2dFvq+zI5h/4h4YrFczqxrXQvlH5PhXLselrr2PbcvYmsFFdgUJ9uq3tkLaCaJSOm4spaVok5QYDp+76SPaALVI/wCsmyQAjBLUiTKUeWlXZhZE0kew2aT99WEQhCcXXoCS2AJVZoD4ooUPqCWozBmRQ18FRhb/7Pg0922Q+mOI7qkiU9MKT09+CKDFthjUyE4og5QRvdKVfzvY6KWYGD9DR0WFoI+ifjah+efpAT+3W78+F5hIA\u003d\u003d"
-          },
-          "body": {
-            "timestamp": "2022-08-06T01:47:44.855Z",
-            "salt": 734782529361218718,
-            "lastSeenSignatures": [
-              {
-                "profileId": "827976805db542929dac840d65a847c0",
-                "lastSignature": "Y9FA2ZgVCwAcFI2tvwk06moPMSNTb8LcmaJQMt7qZwDby7SfSRMvmla+NcYnXSHJwKhVXLZ5KpAZpEMz3gZqsrFbUdcrdi10eBsGOPvd8a0p1s1KtmiFRu5utmQMXZCl+arIHEIYCRZcuTSeyTJuY5lH46M68cbKh/BANO/OwlOj7uDD2LghSSE0aTaVv1CmPm9yzA+kVACxPRgbLdfC+Q6lqxaI00TfhPL4BsJNvRtzA8/7gOL4H7jbIpW8Hfphc3bk83qQ7hyTdTfOwyC9qlpOWut5RrIBmY7X0MJP20XedCys5VEw+D8tb4Z3BoMsKuR8xz/dVKPLOPPOi4U1Nw\u003d\u003d"
-              }
-            ],
-            "message": {
-              "plain": "*?"
-            }
-          },
-          "messageReported": false
-        },
-        {
-          "header": {
-            "profileId": "2e81e91cb6154ba2b7e0e12bda1fcca0",
-            "hashOfBody": "LwAz5I4eIf17vmJiQsuAtb2axj2p9YIfWaLQBl0gz5U\u003d",
-            "signature": "g167eyUhN6uLFTTv0t1ZM96dZzYzIa/yd8iBvhRB2mI0Z9//6RY5un5f1Oo4XKHwLDy4QiVkDCt68QHQK1Uusj5zPpSeODS2tlg7C5SyIZefbHbPBopHOKIAp2hLRWRHHafjRwNSBqWBA4a+Cdb0G9mtxXaEbMwSn/KvXQ2LBdZlepQy6TPEoYw9WHQ9TMdd3VXlVSXC1R+DYByn0t1KlXahzwpAVsOCd3TkI+/V5+QJQZYh2zNu+1lRGdTo54C4glgzcTrja0jEKCDh6h0q8h23rbWgVOXZ5Iq7deZMsYqV2Ydc6NVcBAvqeRiK5roWx6n5Ca241Jwsoz41uqntFw\u003d\u003d"
-          },
-          "body": {
-            "timestamp": "2022-08-06T01:47:49.253Z",
-            "salt": -2756536308224314535,
-            "lastSeenSignatures": [
-              {
-                "profileId": "827976805db542929dac840d65a847c0",
-                "lastSignature": "DwRX76JIZLVhNnT5D8JVf/ZzjWmpWuu603NithkkU3dty7hc1Vft61QJq9VY43BCcQfnSUksI/bZutapX9+dqsPDsy8M/v0WRt2dFvq+zI5h/4h4YrFczqxrXQvlH5PhXLselrr2PbcvYmsFFdgUJ9uq3tkLaCaJSOm4spaVok5QYDp+76SPaALVI/wCsmyQAjBLUiTKUeWlXZhZE0kew2aT99WEQhCcXXoCS2AJVZoD4ooUPqCWozBmRQ18FRhb/7Pg0922Q+mOI7qkiU9MKT09+CKDFthjUyE4og5QRvdKVfzvY6KWYGD9DR0WFoI+ifjah+efpAT+3W78+F5hIA\u003d\u003d"
-              }
-            ],
-            "message": {
-              "plain": "of course"
-            }
-          },
+          "index": 1,
+          "profileId": "366636fd3b0b47748b1ef704181120ed",
+          "sessionId": "184052a39e6d4bd6a82bac5ded3d246e",
+          "timestamp": "2022-12-25T00:23:46.169Z",
+          "salt": 5135517637861187304,
+          "lastSeen": [
+            "dMub12o6YQmJnAOHRfE8wbfyTggKzd0MuQ9Cw1kze1M6kxifQSzBiwwrHtRjxm9vcB+X/nwKtk8LBbXzI09PA65UEVslcqMp85z7DSIbVY3FnhkfJ95MzbvZI53UFPHxNy0pGxh9p9C2PtMb0kqzKUyaCz8hukNjzwLpQCa7kj/RVHRax1eNbboYLVjTSr8VrxjTWc82BJdI/bmLv4nLmCgvYYGb9KD1msqoUSdP1DfVA6PaH/yRTGEE5P82LGg7Hg74J6nf+0TARtLkr6lOZ3/LXI52McIL/QITcvqBeMgiMHBKNevCzrE7HeXIQuOAgERF/dJHQZ6r13S5cpZVFA\u003d\u003d",
+            "sa25xUG+geyOYMioWVpFvpoYGIYATkYpa3KbrSKi6TGy9otyc+hztFQrbECHz0grUZdPirFOJLzQfq2D6wjhWc66lNZHiS+D0n6SSny+jGIQ8U87LiLS3ZqTNLOFWcMIRg5jb/Ug4cm8tAH4PSh3DJlQZ03q8loTnQTKue3uVExMRcGkM5S/nnCKGUujzzs49R7mRmt9y/nGFVEP1mvVmwTFID2LWBbNgmKGZHcc/Vgb/g34TS3vD27T6wQt0MbR6aLIau2razH+eoPzNpZrt6I1P5jmMQW4CjpaTWuD77vviDvI+y1S8Hq+vwCZx40aNwBu6tceCVcATaM/A8mQ1A\u003d\u003d"
+          ],
+          "message": "test2",
+          "signature": "FVhNdh1heFrknbUL7dblokIfOZLHyyNqhJNBBZ9xs7+42kGJ7hbuVaOapSr5YzgyUA4Qo4UMvSfzAVJxxkDNC5m4iv5aL8qs9SXOh6Zl4uioylau8ty817sEIiaD0jxkn455B9bOBsLl+FLjFZ2C2yI9TGbn8rZO+Lhh+VlIXPVmrXsd/qetpPstn9ZkK26zeACDBeeZ1DkyYt3ZRyn5c5yQOTE4GwtLTF8BdbrRcy/MfDOuZlOBmdCxwud9mnFK87qmpkjdh2MiIBZRakHdMgX5UOmwA0jodayxKi/jEJXV8yPjPD5TiMFc1uFqmQBlw9mOrVWAWoeh8L2Dasn78w\u003d\u003d",
           "messageReported": true
         }
       ]
     },
     "reportedEntity": {
-      "profileId": "2e81e91cb6154ba2b7e0e12bda1fcca0"
+      "profileId": "366636fd3b0b47748b1ef704181120ed"
     },
-    "createdTime": "2022-08-06T01:47:51.910931439Z"
+    "createdTime": "2022-12-25T00:23:49.429711560Z"
   },
   "clientInfo": {
-    "clientVersion": "1.19.1"
+    "clientVersion": "1.19.3"
   },
   "thirdPartyServerInfo": {
-    "address": ""
+    "address": "127.0.0.1"
   }
 }

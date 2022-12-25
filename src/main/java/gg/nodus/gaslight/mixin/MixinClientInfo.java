@@ -14,7 +14,7 @@ public class MixinClientInfo {
     public String clientVersion;
 
     @Inject(method = "<init>", at = @At("TAIL"))
-    public void init(String clientVersion, CallbackInfo ci) {
+    public void init(final String clientVersion, final CallbackInfo ci) {
         this.clientVersion = this.clientVersion.replace(" (modded)", "");
     }
 
