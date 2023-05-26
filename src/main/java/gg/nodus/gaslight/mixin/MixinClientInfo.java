@@ -13,8 +13,8 @@ public class MixinClientInfo {
     @Shadow(remap = false)
     public String clientVersion;
 
-    @Inject(method = "<init>", at = @At("TAIL"))
-    public void init(final String clientVersion, final CallbackInfo ci) {
+    @Inject(method = "<init>", at = @At("TAIL"), remap = false)
+    public void init(final String clientVersion, final String locale, final CallbackInfo ci) {
         this.clientVersion = this.clientVersion.replace(" (modded)", "");
     }
 

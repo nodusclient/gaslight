@@ -34,7 +34,7 @@ public abstract class MixinMessageEntry {
     @Shadow
     protected abstract boolean toggle();
 
-    @ModifyArg(method = "render", index = 5, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawableHelper;drawWithShadow(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/OrderedText;III)V"))
+    @ModifyArg(method = "render", index = 5, at = @At(value = "INVOKE", target = "Lnet/minecraft/client/gui/DrawableHelper;drawTextWithShadow(Lnet/minecraft/client/util/math/MatrixStack;Lnet/minecraft/client/font/TextRenderer;Lnet/minecraft/text/OrderedText;III)V"))
     public int redirect(final int x) {
         if (Gaslight.REMOVED_MESSAGE_INDEXES.contains(this.index)) {
             return 0xFFFF0000;
@@ -88,7 +88,7 @@ public abstract class MixinMessageEntry {
     private void drawButton(final MatrixStack matrices, final int x, final int y, final int size, final String text, final boolean enabled) {
         Screen.fill(matrices, x, y, x + size + 1, y + size, 0xFFCCCCCC);
         Screen.fill(matrices, x + 1, y + 1, x + size, y + size - 1, 0xFF6E6E6E);
-        Screen.drawCenteredText(matrices, MinecraftClient.getInstance().textRenderer, text, x + (size / 2) + 1, y + (size / 2) - (MinecraftClient.getInstance().textRenderer.fontHeight / 2), 0xFFFFFFFF);
+        Screen.drawCenteredTextWithShadow(matrices, MinecraftClient.getInstance().textRenderer, text, x + (size / 2) + 1, y + (size / 2) - (MinecraftClient.getInstance().textRenderer.fontHeight / 2), 0xFFFFFFFF);
         if (!enabled) {
             Screen.fill(matrices, x, y, x + size + 1, y + size, 0x99000000);
         }

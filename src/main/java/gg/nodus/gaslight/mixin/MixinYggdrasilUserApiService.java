@@ -17,16 +17,16 @@ public class MixinYggdrasilUserApiService {
 
     @Inject(method = "reportAbuse", at = @At("HEAD"), cancellable = true, remap = false)
     public void reportAbuse(final AbuseReportRequest request, final CallbackInfo ci) {
-        /*final ObjectMapper objectMapper = ObjectMapper.create();
-        final String string = objectMapper.writeValueAsString(request);
-        System.out.println(string);
-        try {
-            Files.writeString(MinecraftClient.getInstance().runDirectory.toPath().resolve("gaslight_report" + System.currentTimeMillis() + ".json"), string);
-        } catch (final IOException e) {
-            ci.cancel();
-            throw new RuntimeException(e);
-        }
-        ci.cancel();*/
+//        final ObjectMapper objectMapper = ObjectMapper.create();
+//        final String string = objectMapper.writeValueAsString(request);
+//        System.out.println(string);
+//        try {
+//            Files.writeString(MinecraftClient.getInstance().runDirectory.toPath().resolve("gaslight_report" + System.currentTimeMillis() + ".json"), string);
+//        } catch (final IOException e) {
+//            ci.cancel();
+//            throw new RuntimeException(e);
+//        }
+//        ci.cancel();
     }
 
 }
