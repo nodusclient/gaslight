@@ -1,0 +1,6 @@
+name: gaslight
+main: gg.nodus.gaslight.GaslightPlugin
+version: 5
+commands:
+  gaslight:
+    usage: "/gaslight [word] [words to append]"
